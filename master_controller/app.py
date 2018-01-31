@@ -19,7 +19,7 @@ def get_state():
     return jsonify(state=random.choice(STATES))
 
 @APP.route('/state', methods=['POST'])
-def trigger_state():
+def set_state():
     """Trigger state change"""
     request_data = request.get_json(silent=False)
     state = request_data['state']
