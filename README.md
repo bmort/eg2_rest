@@ -53,13 +53,13 @@ curl http://localhost:5000/state \
     -d '{"data": { "type": "computer" }}' \
 ```
 
-Now lets build the Docker container.
+Now lets build the Docker image.
 
 ```bash
 docker-compose build
 ```
 
-And run the Docker container on the local Docker engine
+And run a Docker container on the local Docker engine
 
 ```bash
 docker-compose up -d
@@ -82,3 +82,6 @@ Clean up
 ```bash
 docker stack rm sip
 ```
+
+*Note that for consistency with example1, a CLI client using the requests
+library is provided (master_controller/cli_client.py)*
