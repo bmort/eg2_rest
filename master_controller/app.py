@@ -18,7 +18,7 @@ def get_state():
     """Return the SDP State."""
     return jsonify(state=random.choice(STATES))
 
-@APP.route('/state', methods=['POST'])
+@APP.route('/state', methods=['PUT'])
 def set_state():
     """Trigger state change"""
     request_data = request.get_json(silent=False)

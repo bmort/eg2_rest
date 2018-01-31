@@ -8,6 +8,7 @@ Example Master Controller with a **very simple** REST API.
 
 - <http://flask.pocoo.org/>
 - <https://flask-restful.readthedocs.io/en/latest/quickstart.html>
+- <http://www.restapitutorial.com/lessons/httpmethods.html>
 - <http://gunicorn.org/>
 
 ## Quickstart
@@ -48,7 +49,7 @@ curl http://localhost:5000/state
 
 ```bash
 curl http://localhost:5000/state \
-    -X POST \
+    -X PUT \
     -H "Content-Type: application/json" \
     -d '{ "state": "INIT" }' \
 ```
