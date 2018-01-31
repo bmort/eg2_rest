@@ -3,7 +3,7 @@ version: '3.4'
 services:
 
   master_controller:
-    image: skasip/master
+    image: skasip/eg2_master
     ports:
       - 5000:5000
     build: ./master_controller
