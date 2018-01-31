@@ -50,7 +50,7 @@ curl http://localhost:5000/state
 curl http://localhost:5000/state \
     -X POST \
     -H "Content-Type: application/json" \
-    -d '{"data": { "type": "computer" }}' \
+    -d '{ "state": "INIT" }' \
 ```
 
 Now lets build the Docker image.

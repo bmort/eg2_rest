@@ -1,6 +1,3 @@
-#
-# master_controller/rest/Dockerfile
-#
 FROM python:3.6-alpine3.6
 LABEL maintainer="Benjamin Mort <ben.mort@gmail.com>"
 
