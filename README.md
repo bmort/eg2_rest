@@ -32,13 +32,9 @@ Run the Master Controller natively on localhost using the Flask built-in
 development server:
 
 ```bash
-python3 master_controller/app.py
-```
-
-or using gunicorn:
-
-```bash
-gunicorn -b 0.0.0.0:5000 master_controller.app:app
+export FLASK_APP=master_controller/app.py
+export FLASK_DEBUG=True
+flask run
 ```
 
 Test:

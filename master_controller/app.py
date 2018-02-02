@@ -1,36 +1,24 @@
 # -*- coding: utf-8 -*-
 """Example Master Controller with a REST API."""
 import random
-
-from flask import Flask, jsonify, request
-
-
-# Create Flask application
-APP = Flask(__name__)
+from flask_api import FlaskAPI
+from flask import request
 
 
-STATES = ['OFF', 'INIT', 'STANDBY', 'ON', 'DISABLE', 'FAULT', 'ALARM',
-          'UNKNOWN']
+APP = FlaskAPI(__name__)
 
 
-@APP.route('/state', methods=['GET'])
-def get_state():
-    """Return the SDP State."""
-    return jsonify(state=random.choice(STATES))
+@APP.route('/state', methods=['GET', 'PUT'])
+def sdp_state():
+    """SDP State"""
+    states = ['OFF', 'INIT', 'STANDBY', 'ON', 'DISABLE', 'FAULT', 'ALARM',
+              'UNKNOWN']
 
-@APP.route('/state', methods=['PUT'])
-def set_state():
-    """Trigger state change"""
-    request_data = request.get_json(silent=False)
-    state = request_data['state']
-    return jsonify(message='Triggered state: ' + state)
+    if request.method == 'PUT':
+        request_data = request.get_json(silent=False)
+        state = request_data['state'].upper()
+        if state.upper() not in states:
+            return {'error': 'Invalid state: {}'.format(state)}, 400
+        return {'message': 'Triggered state: {}'.format(state)}, 202
 
-@APP.errorhandler(404)
-def not_found(error=None):
-    """Example custom error handler"""
-    response = jsonify(error='Invalid URL: ' + request.url)
-    response.status_code = 404
-    return response
-
-if __name__ == '__main__':
-    APP.run(debug=True)
+    return {'state': random.choice(states)}
